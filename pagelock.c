@@ -24,9 +24,14 @@ int main(int argc, char** argv) {
 	int psize = sysconf(_SC_PAGESIZE);
 	size_t len = count * psize;
 
-#ifdef __APPLE__
+#ifdef MAP_ANONYMOUS
+#define MAP_ANON MAP_ANONYMOUS
+#endif
+
+#ifdef MAP_ANON
 	void* pointer = mmap(NULL, len, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANON, -1, 0);
 #else
+#define __MAPPED_FILE
 	int fd = open("/dev/zero", O_RDWR);
 	void* pointer = mmap(NULL, len, PROT_READ | PROT_WRITE, MAP_PRIVATE, fd, 0);
 #endif
@@ -52,7 +57,7 @@ int main(int argc, char** argv) {
 		exit(4);
 	}
 
-#ifndef __APPLE__
+#ifdef __MAPPED_FILE
 	close(fd);
 #endif
 

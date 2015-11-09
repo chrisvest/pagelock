@@ -1,0 +1,10 @@
+[package]
+name = "pagelock"
+version = "0.1.0"
+authors = ["Chris Vest <mr.chrisvest@gmail.com>"]
+
+[dependencies]
+libc = "0.2.1"
+
+[[bin]]
+name = "pagelock"

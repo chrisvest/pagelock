@@ -1,0 +1,10 @@
+= PageLock
+
+Have you ever felt like your computer just has _too much_ RAM?
+No more! PageLock will take all that excess RAM and make it go away!
+
+This is useful for quickly testing software in memory constrained environments.
+It's not quite the same as starting up a virtual machine with a small memory allocation.
+The `pagelock` program will simply use however much memory you tell it to, but all the overhead of managing that memory is still there.
+
+Licensed under MIT.
